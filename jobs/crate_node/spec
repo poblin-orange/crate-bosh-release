@@ -1,0 +1,46 @@
+---
+name: crate_node
+packages:
+- java-common
+- openjdk
+- crate
+
+consumes:
+- name: peers
+  type: crate_peers
+  
+provides:
+- name: peers
+  type: crate_peers
+ 
+templates:
+  bin/ctl: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/crate.yml.erb: config/crate.yml
+  config/logging.yml.erb: config/logging.yml  
+
+properties:
+  hazelcast.use_consul_discovery:
+    description: should hazelcast node use consul discovery. otherwise, bosh links consume/provides must be set
+    default: false
+  hazelcast.group.name:
+    description:
+      name of the hazelcast group
+
+  hazelcast.group.password:
+    description:
+      password for the hazelcast group
+
+  hazelcast.consul-service-name:
+    description:
+      name of the consul cluster
+    default: hz-consul-discovery-cluster
+  
+  hazelcast.jvm.memoryMo:
+    description:
+      max memory to allocate to JVM
+
+    
