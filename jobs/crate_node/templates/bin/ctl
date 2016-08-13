@@ -17,12 +17,7 @@ case $1 in
     # store pid in $PIDFILE
     echo $$ > $PIDFILE
 
-	exec chpst -u vcap:vcap $JAVA_HOME/bin/java  \
-               -server -XX:+UseG1GC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=25 -Xms<%= p('crate.jvm.memoryMo') %>M -Xmx<%= p('crate.jvm.memoryMo') %>M \
-               -Dlogback.configurationFile=$JOB_DIR/config/logback.xml \
-               -Dcrate.config=$JOB_DIR/config/crate.xml \
-               -classpath /var/vcap/packages/crate-bosh-uberjar-pkg/crate-bosh-uberjar.jar \
-               com.crate.core.server.StartServer \
+	exec chpst -u vcap:vcap  /var/vcap/packages/crate/bin/crate -Des.path.home=/var/vcap/jobs/crate_node
                 >>$LOG_DIR/$JOB_NAME.log 2>&1
     ;;
 

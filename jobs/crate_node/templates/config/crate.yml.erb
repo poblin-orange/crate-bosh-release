@@ -245,11 +245,11 @@
 
 # Path to directory containing configuration (this file and logging.yml):
 #
-#path.conf: /path/to/conf
+path.conf: /var/vcap/jobs/crate_node/config
 
 # Path to directory where to store table data allocated for this node.
 #
-#path.data: /path/to/data
+path.data: /var/vcap/store/crate_node
 #
 # Can optionally include more than one location, causing data to be striped across
 # the locations (a la RAID 0) on a file level, favouring locations with most free
@@ -263,11 +263,11 @@
 
 # Path to log files:
 #
-#path.logs: /path/to/logs
+path.logs: /var/vcap/sys/log/crate_node 
 
 # Path to where plugins are installed:
 #
-#path.plugins: /path/to/plugins
+path.plugins: /var/vcap/packages/crate/plugins
 
 
 #path:

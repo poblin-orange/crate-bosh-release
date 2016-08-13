@@ -23,24 +23,22 @@ templates:
   config/logging.yml.erb: config/logging.yml  
 
 properties:
+
+  crate.jvm.memoryMo:
+    description: memory
+
+
   hazelcast.use_consul_discovery:
     description: should hazelcast node use consul discovery. otherwise, bosh links consume/provides must be set
     default: false
   hazelcast.group.name:
     description:
       name of the hazelcast group
+    default: xx
 
-  hazelcast.group.password:
-    description:
-      password for the hazelcast group
 
   hazelcast.consul-service-name:
     description:
       name of the consul cluster
     default: hz-consul-discovery-cluster
   
-  hazelcast.jvm.memoryMo:
-    description:
-      max memory to allocate to JVM
-
-    
